@@ -1,6 +1,6 @@
 export const data = {
   user: {
-    id: 232,
+    id: 1,
     userName: "JohnRamboIV",
     email: "the-real-john-rambo-iv@gmail.com",
     status: "PRO"
@@ -9,7 +9,7 @@ export const data = {
     {
       id: 1,
       artist: "Slipknot",
-      name: "Subliminal Verses",
+      name: "Vol. 3: (The Subliminal Verses)",
       favorite: false,
       stars: 4,
       coverUri: "https://i.picsum.photos/id/2/300/150.jpg",
@@ -32,12 +32,44 @@ export const data = {
     {
       id: 3,
       artist: "Slipknot",
-      name: "Self-titled",
+      name: "Slipknot",
       favorite: false,
       stars: 5,
       coverUri: "https://i.picsum.photos/id/111/300/150.jpg",
       review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `
+    },
+    {
+      id: 4,
+      artist: "Slipknot",
+      name: ".5: The Gray Chapter",
+      favorite: false,
+      stars: 4,
+      coverUri: "https://i.picsum.photos/id/134/300/150.jpg",
+      review: `Turpis tincidunt id aliquet risus. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus.
+       Curabitur vitae nunc sed velit dignissim sodales ut eu sem.`
+    },
+    {
+      id: 5,
+      artist: "Slipknot",
+      name: "All Hope Is Gone",
+      favorite: false,
+      stars: 3,
+      coverUri: "https://i.picsum.photos/id/237/300/150.jpg",
+      review: `Turpis tincidunt id aliquet risus. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus.
+       Curabitur vitae nunc sed velit dignissim sodales ut eu sem.`
+    },
+    {
+      id: 6,
+      artist: "Slipknot",
+      name: "We Are Not Your Kind",
+      favorite: false,
+      stars: 3,
+      coverUri: "https://i.picsum.photos/id/337/300/150.jpg",
+      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      Turpis tincidunt id aliquet risus. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus.
+       Curabitur vitae nunc sed velit dignissim sodales ut eu sem.`
     }
   ]
 };

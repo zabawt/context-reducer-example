@@ -1,24 +1,39 @@
-import { RATE_ALBUM } from "./actions";
+import { RATE_ALBUM, TOGGLE_FAVORITE } from "./actions";
+
+/** helpers */
+const updateAlbumKeyById = key => albums => (id, value) => {
+  return albums.map(album => {
+    if (album.id === id && value != undefined) album[key] = value;
+    return album;
+  });
+};
+
+const getAlbumById = albums => id =>
+  albums.filter(album => album.id === id).pop();
+
+const updateAlbumRating = updateAlbumKeyById("stars");
+const updateAlbumFavorite = updateAlbumKeyById("favorite");
+
 export default (state, { type, payload }) => {
-  const functions = {
+  const actionReducers = {
     [RATE_ALBUM]: () => {
-      const { albums } = state;
-      const { id, rating } = payload;
-      const updateReview = () =>
-        albums.map(album => {
-          if (album.id === id) {
-            album.stars = rating;
-          }
-          return album;
-        });
-      return { ...state, albums: updateReview() };
+      return {
+        ...state,
+        albums: updateAlbumRating(state.albums)(payload.id, payload.rating)
+      };
+    },
+    [TOGGLE_FAVORITE]: () => {
+      const getFavorite = getAlbumById(state.albums)(payload.id).favorite;
+      return {
+        ...state,
+        albums: updateAlbumFavorite(state.albums)(payload.id, !getFavorite)
+      };
     }
   };
 
-  switch (type) {
-    case RATE_ALBUM:
-      return functions[RATE_ALBUM]();
-    default:
-      return state;
-  }
+  const actionReducer = actionReducers[type];
+
+  if (!actionReducer)
+    throw new Error("Invalid action type, default state applied");
+  return actionReducer ? actionReducer() : state;
 };

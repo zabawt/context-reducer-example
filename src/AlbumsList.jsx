@@ -1,20 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import Album from "./Album";
-import { AppContext } from "./store";
-import { RATE_ALBUM, actionCreator } from "./actions";
+import ActionProvider from "./ActionProvider";
+import { Grid } from "@material-ui/core";
 
 const AlbumsList = ({ albums }) => {
-  const { dispatch } = useContext(AppContext);
-  const rateAction = actionCreator()[RATE_ALBUM];
-  return albums.map(album => (
-    <Album
-      {...album}
-      key={album.name}
-      onRatingChange={value => {
-        if (value) dispatch(rateAction(album.id, value));
-      }}
-    />
-  ));
+  return (
+    <ActionProvider>
+      {({ dispatchAlbumRate, dispatchToggleFavorite }) => (
+        <Grid container>
+          {albums.map(album => (
+            <Album
+              {...album}
+              key={album.name}
+              onRatingChange={dispatchAlbumRate}
+              onToggleFavorite={dispatchToggleFavorite}
+            />
+          ))}
+        </Grid>
+      )}
+    </ActionProvider>
+  );
 };
 
 export default AlbumsList;

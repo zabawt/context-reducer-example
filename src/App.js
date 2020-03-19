@@ -10,15 +10,15 @@ import User from "./User";
 export default function App() {
   return (
     <AppContextProvider initialValue={data}>
-      <Box bgcolor="#161616" height="100%" minHeight="100vh" padding="24px">
-        <Container maxWidth="md">
+      <Box bgcolor="#161616" height="100%" minHeight="100vh" paddingTop="24px">
+        <Container maxWidth="xl">
           <AppContextConsumer>
             {({ state: { user, albums } }) => (
-              <Grid container spacing={4}>
-                <Grid item xs={4}>
+              <Grid container spacing={2}>
+                <Grid item xs={3}>
                   <User {...user} />
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={9}>
                   <AlbumsList albums={albums} />
                 </Grid>
               </Grid>
