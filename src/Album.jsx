@@ -5,7 +5,7 @@ import {
   CardMedia,
   CardHeader,
   CardActions,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -18,21 +18,25 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 300,
     background: "#333",
     color: "white",
-    margin: "12px"
+    margin: "12px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   title: {
     fontSize: "small",
     textTransform: "uppercase",
     fontWeight: "bold",
-    whiteSpace: "nowrap"
+    whiteSpace: "nowrap",
   },
   favorites: {
-    color: "firebrick"
+    color: "firebrick",
   },
   media: {
-    height: 0,
-    paddingTop: "50%"
-  }
+    height: "150px",
+    minHeight: "150px",
+    maxHeight: "150px",
+  },
 }));
 
 const Album = ({
@@ -44,7 +48,7 @@ const Album = ({
   coverUri,
   review,
   onRatingChange,
-  onToggleFavorite
+  onToggleFavorite,
 }) => {
   const handleRatingOnChange = (event, stars) => {
     onRatingChange(id, stars);
@@ -57,7 +61,7 @@ const Album = ({
   const { root, favorites, title, media } = useStyles();
   const favoriteIcons = {
     fontSize: "large",
-    className: favorites
+    className: favorites,
   };
   return (
     <Card className={root} key={name}>
@@ -65,7 +69,7 @@ const Album = ({
         title={name}
         subheader={artist}
         classes={{
-          title
+          title,
         }}
         action={
           <IconButton onClick={handleToggleFavorite}>
@@ -78,7 +82,7 @@ const Album = ({
         }
       />
       <CardMedia className={media} image={coverUri} title={name} />
-      <CardContent>
+      <CardContent style={{ flex: 3 }}>
         <Typography variant="body2" component="p">
           {review}
         </Typography>
