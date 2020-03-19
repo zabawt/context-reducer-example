@@ -3,6 +3,6 @@
 Simple example of connecting context hooks with useReducer
 
 ## Installation
-- clone repo
+- git clone https://github.com/zabawt/context-reducer-example.git
 - npm i
 - npm start
